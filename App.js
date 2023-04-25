@@ -10,6 +10,7 @@ import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetailsScreen from './screens/MealDetailsScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
 import { Ionicons } from '@expo/vector-icons'
+import FavoritesContextProvider from './screens/store/context/favorites-context';
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -54,6 +55,8 @@ function DrawerNavigator() {
   )
 }
 
+
+// not in use at the moment
 const HeaderGradient = () => {
   return (
     <LinearGradient
@@ -67,12 +70,9 @@ const HeaderGradient = () => {
 export default function App() {
   return (<>
     <StatusBar style="light" />
-    <ImageBackground source={require('./assets/images/food.jpg')}
-      resizeMode="cover"
-      style={styles.container}
-      imageStyle={styles.backgroundImage}
-    >
 
+
+    <FavoritesContextProvider>
       <NavigationContainer>
 
         <Stack.Navigator
@@ -106,8 +106,7 @@ export default function App() {
         </Stack.Navigator>
 
       </NavigationContainer>
-
-    </ImageBackground>
+    </FavoritesContextProvider>
 
   </>
   );
